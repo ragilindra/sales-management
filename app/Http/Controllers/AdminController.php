@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function index(){
-       
-            echo "Halo";
-            echo Auth::user()->name;
-        
+        return view('dashboard');
     }
 }

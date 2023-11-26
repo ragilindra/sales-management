@@ -5,19 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class AuthController extends Controller
 {
-    public function index()
+    function index()
     {
         $data = array(
-            'title' => 'Dashboard'
+            'title' => 'Login'
         );
 
         // return view('dashboard',$data);
         return view('login', $data);
     }
 
-    public function login(Request $request)
+    function login(Request $request)
     {
         $request->validate(
             [
@@ -36,9 +36,18 @@ class HomeController extends Controller
         ];
 
         if (Auth::attempt($infoLogin)) {
-            return redirect('admin');
+            if (Auth::user()->role == 'admin') {
+                return redirect('/admin');
+            } elseif (Auth::user()->role == 'barista') {
+                return redirect('/barista');
+            }
         } else{
             return redirect('')->withErrors('Username or Password invalid')->withInput();
         }
+    }
+
+    function logout(){
+        Auth::logout();
+        return redirect('');
     }
 }

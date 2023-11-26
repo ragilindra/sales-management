@@ -35,6 +35,19 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
                 </li>
+
+                <!-- Right navbar links -->
+               
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <li class="nav-item">
+                    <a class="nav-link"  href="logout" role="button">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+            </ul>
+
         </nav>
         <!-- /.navbar -->
 
@@ -63,139 +76,204 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Dashboard -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    {{-- <i class="right fas fa-angle-left"></i> --}}
-                                </p>
-                            </a>
-                        </li>
+                        @if (Auth::user()->role == 'admin')
+                            <!-- Dashboard -->
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                        {{-- <i class="right fas fa-angle-left"></i> --}}
+                                    </p>
+                                </a>
+                            </li>
 
-                        {{-- User Management --}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>
-                                    User Management
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Admin</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Barista</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                            {{-- User Management --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>
+                                        User Management
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="../layout/top-nav.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Admin</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Barista</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        {{-- Menu Management --}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-hamburger"></i>
-                                <p>
-                                    Menu Management
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../charts/chartjs.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>ChartJS</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/flot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Flot</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/inline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../charts/uplot.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>uPlot</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                            {{-- Menu Management --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-hamburger"></i>
+                                    <p>
+                                        Menu Management
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="../charts/chartjs.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>ChartJS</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../charts/flot.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Flot</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../charts/inline.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Inline</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../charts/uplot.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>uPlot</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        {{-- Transaction Management --}}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Transaction Report
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="../UI/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>General</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/icons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Icons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/buttons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Buttons</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/sliders.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Sliders</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/modals.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Modals & Alerts</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/navbar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Navbar & Tabs</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/timeline.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Timeline</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../UI/ribbons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Ribbons</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                            {{-- Transaction Management --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <p>
+                                        Transaction Report
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="../UI/general.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>General</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/icons.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Icons</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/buttons.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Buttons</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/sliders.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Sliders</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/modals.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Modals & Alerts</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/navbar.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Navbar & Tabs</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/timeline.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Timeline</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/ribbons.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Ribbons</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                        @if (Auth::user()->role == 'barista')
+                            {{-- Transaction Management --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <p>
+                                        Transaction Report
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="../UI/general.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>General</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/icons.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Icons</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/buttons.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Buttons</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/sliders.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Sliders</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/modals.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Modals & Alerts</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/navbar.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Navbar & Tabs</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/timeline.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Timeline</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="../UI/ribbons.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Ribbons</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -243,16 +321,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $no = 1;    
+                                            @endphp
+                                            @foreach ($data_user as $row)    
                                             <tr>
-                                                <td>1</td>
-                                                <td>Budiman123
+                                                <td>{{$no++}}</td>
+                                                <td>{{$row->id_users->username}}
+                                                <td>{{$row->name}}
                                                 </td>
-                                                <td>Budiman</td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit mr-2"></i>Update</button> 
-                                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash mr-2"></i>Delete</button> 
+                                                    <button class="btn btn-sm btn-warning"><i
+                                                            class="fas fa-edit mr-2"></i>Update</button>
+                                                    <button class="btn btn-sm btn-danger"><i
+                                                            class="fas fa-trash mr-2"></i>Delete</button>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
